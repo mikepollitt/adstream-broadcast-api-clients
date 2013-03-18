@@ -2,3 +2,4 @@ Java.iml
 dist
 out
 tmp
+*.class
