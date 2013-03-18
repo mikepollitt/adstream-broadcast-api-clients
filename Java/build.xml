@@ -1,0 +1,45 @@
+<project name="adstream-broadcast-api-client" default="dist" basedir=".">
+    <description>
+        Ant build file for the Adstream Broadcast API Client sample code project
+    </description>
+
+    <!-- change to "off" for production -->
+    <property name="debug" value="true"/>
+
+    <property name="src" location="src"/>
+    <property name="tmp" location="tmp"/>
+    <property name="dist" location="dist"/>
+    <property name="lib" location="lib"/>
+
+    <target name="init">
+        <!-- Create the necessary directories -->
+        <mkdir dir="${tmp}"/>
+        <mkdir dir="${dist}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src}" destdir="${tmp}" debug="${debug}">
+            <!--classpath>
+                <fileset dir="${lib}" includes="jaxb*.jar"/>
+            </classpath-->
+        </javac>
+    </target>
+
+    <target name="build" depends="compile">
+        <jar jarfile="${dist}/test-client.jar" basedir="${tmp}" manifest="Manifest.txt"/>
+        <!--copy todir="${dist}/lib">
+            <fileset dir="${lib}" includes="*.jar"/>
+        </copy-->
+    </target>
+
+    <target name="dist" depends="build">
+
+    </target>
+
+    <target name="clean">
+        <delete dir="${tmp}"/>
+        <delete dir="${dist}"/>
+    </target>
+
+
+</project>
